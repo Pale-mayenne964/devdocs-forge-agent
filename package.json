@@ -25,6 +25,7 @@
     "website:build": "cd website && node ./node_modules/@docusaurus/core/bin/docusaurus.mjs build"
   },
   "dependencies": {
+    "clipboardy": "^5.3.1",
     "commander": "^12.1.0",
     "dotenv": "^16.4.5",
     "js-yaml": "^4.1.0",
