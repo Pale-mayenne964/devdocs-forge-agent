@@ -15,14 +15,15 @@ Generate your first doc in under 5 minutes. No API key needed.
 - npm 9 or later
 - Git
 
-```bash
+```bash title="Check prerequisites"
 node --version   # v18.x.x or higher
 npm --version    # v9.x.x or higher
+git --version
 ```
 
 ## 1. Clone and install
 
-```bash
+```bash title="Install DevDocs Forge Agent"
 git clone https://github.com/AnkitParekh007/devdocs-forge-agent.git
 cd devdocs-forge-agent
 npm install
@@ -30,7 +31,7 @@ npm install
 
 ## 2. Configure environment
 
-```bash
+```bash title="Create local environment file"
 cp .env.example .env
 ```
 
@@ -42,7 +43,7 @@ DEVDOCS_PROVIDER=mock
 
 ## 3. Run the demo
 
-```bash
+```bash title="Run the local demo"
 npm run demo
 ```
 
@@ -55,9 +56,9 @@ This single command:
 
 ## 4. View the output
 
-Generated files appear in `output/angular-signals-tutorial-{date}/`:
+Generated files appear in `output/angular-signals-tutorial-{date}/`.
 
-```
+```txt title="Generated output"
 output/angular-signals-tutorial-2026-05-13/
 ├── index.md
 ├── metadata.json
@@ -68,7 +69,7 @@ output/angular-signals-tutorial-2026-05-13/
 ```
 
 | File | Purpose |
-|------|---------|
+| ---- | ------- |
 | `index.md` | Main generated documentation |
 | `metadata.json` | Provider, model, timestamp, and warnings |
 | `review-checklist.md` | Human review checklist before publishing |
@@ -79,13 +80,13 @@ output/angular-signals-tutorial-2026-05-13/
 
 Drop your transcript into `input/` and run:
 
-```bash
+```bash title="Generate Docusaurus docs"
 npm run generate -- --file input/my-tutorial.md --type docusaurus
 ```
 
 Choose a different output mode:
 
-```bash
+```bash title="Generate different output types"
 npm run generate -- --file input/my-tutorial.md --type blog
 npm run generate -- --file input/my-tutorial.md --type faq
 npm run generate -- --file input/my-tutorial.md --type readme
@@ -103,7 +104,7 @@ OPENAI_MODEL=gpt-4.1-mini
 
 Then run:
 
-```bash
+```bash title="Generate with configured provider"
 npm run generate -- --file input/my-tutorial.md --type docusaurus
 ```
 

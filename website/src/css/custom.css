@@ -245,31 +245,34 @@
 
 /* Copy button — visible against dark code block bg */
 button[class*="copyButton"] {
-  color: #94a3b8 !important;
+  color: #cbd5e1 !important;
   transition: color 0.15s;
 }
 
 button[class*="copyButton"]:hover {
-  color: #e2e8f0 !important;
+  color: #ffffff !important;
 }
 
 /* Code block title bar */
 [data-theme='light'] [class*="codeBlockTitle"] {
   background: #0d1324 !important;
-  color: #94a3b8 !important;
+  color: #e2e8f0 !important;
   border-bottom: 1px solid rgba(148, 163, 184, 0.15) !important;
 }
 
 [data-theme='dark'] [class*="codeBlockTitle"] {
   background: #0d1117 !important;
-  color: #94a3b8 !important;
+  color: #e2e8f0 !important;
   border-bottom: 1px solid rgba(148, 163, 184, 0.12) !important;
 }
 
 /* ── Docs tables ───────────────────────────────────────────── */
 .markdown table {
+  display: table;
   width: 100%;
   border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
   margin: 1.5rem 0;
 }
 

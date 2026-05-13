@@ -1,7 +1,7 @@
 ---
 id: cli-commands
 title: CLI Commands
-sidebar_position: 9
+sidebar_position: 3
 description: Full reference for all devdocs-forge-agent CLI commands.
 ---
 
@@ -50,7 +50,9 @@ One-command demo. Runs in mock mode regardless of your `.env` setting.
 npm run demo
 ```
 
-Runs: `doctor` → `examples` → `generate` (Angular Signals tutorial, docusaurus) → `verify`
+```txt title="Demo pipeline"
+doctor → examples → generate (Angular Signals tutorial, docusaurus) → verify
+```
 
 ---
 
@@ -64,23 +66,23 @@ npm run generate -- --file <path> [options]
 
 ### Flags
 
-| Flag | Required | Description |
-|------|----------|-------------|
-| `--file <path>` | Yes | Path to transcript file |
-| `--type <mode>` | No | Output mode (default from config) |
-| `--url <url>` | No | Video URL — runs intake guard; used as `sourceUrl` |
-| `--source-url <url>` | No | Static source URL for attribution |
-| `--force` | No | Bypass low-confidence classification |
+| Flag                  | Required | Description                                         |
+| --------------------- | -------: | --------------------------------------------------- |
+| `--file <path>`       |      Yes | Path to transcript file                             |
+| `--type <mode>`       |       No | Output mode (default from config)                   |
+| `--url <url>`         |       No | Video URL — runs intake guard; used as `sourceUrl`  |
+| `--source-url <url>`  |       No | Static source URL for attribution                   |
+| `--force`             |       No | Bypass low-confidence classification                |
 
 ### Basic example
 
-```bash
+```bash title="Generate Docusaurus docs"
 npm run generate -- --file input/my-tutorial.md --type docusaurus
 ```
 
 ### With video URL (runs intake guard)
 
-```bash
+```bash title="Generate with video URL"
 npm run generate -- \
   --url "https://youtube.com/watch?v=..." \
   --file input/my-tutorial.md \
@@ -89,7 +91,7 @@ npm run generate -- \
 
 ### Force bypass for low-confidence classification
 
-```bash
+```bash title="Force bypass"
 npm run generate -- \
   --url "https://youtube.com/watch?v=..." \
   --file input/my-tutorial.md \
@@ -98,7 +100,7 @@ npm run generate -- \
 
 ### All output modes
 
-```bash
+```bash title="All output modes"
 npm run generate -- --file input/tutorial.md --type blog
 npm run generate -- --file input/tutorial.md --type faq
 npm run generate -- --file input/tutorial.md --type readme

@@ -15,23 +15,23 @@ You bring the transcript. DevDocs Forge Agent generates everything else.
 
 Creating good developer documentation is time-consuming. Most developers have:
 
-- Recorded tutorials or walkthroughs they haven't documented
-- Product demos with no written follow-up
-- Course lessons or internal training without searchable docs
-- Learning notes from talks they attended
+* Recorded tutorials or walkthroughs they haven't documented
+* Product demos with no written follow-up
+* Course lessons or internal training without searchable docs
+* Learning notes from talks they attended
 
 DevDocs Forge Agent closes the gap between "video content" and "publishable documentation" — without scraping, without lock-in, and without leaving your terminal.
 
 ## What it generates
 
-| Input | Output |
-|-------|--------|
-| Tutorial transcript | Step-by-step developer guide |
-| Product demo transcript | Help docs / onboarding page |
-| Course lesson notes | Lesson page with objectives |
-| Raw learning notes | Developer blog post |
-| Bug walkthrough | Troubleshooting guide |
-| API demo | README tutorial |
+| Input                      | Output                          |
+| -------------------------- | ------------------------------- |
+| Tutorial transcript        | Step-by-step developer guide    |
+| Product demo transcript    | Help docs / onboarding page     |
+| Course lesson notes        | Lesson page with objectives     |
+| Raw learning notes         | Developer blog post             |
+| Bug walkthrough            | Troubleshooting guide           |
+| API demo                   | README tutorial                 |
 
 ## Key principles
 
@@ -53,15 +53,15 @@ Every generation run creates a `review-checklist.md` alongside the generated doc
 
 ## Who is it for?
 
-- **Developer YouTubers** — turn tutorial recordings into Docusaurus sites
-- **DevRel teams** — convert demo recordings into onboarding docs
-- **Course creators** — generate lesson pages from lecture notes
-- **Open-source maintainers** — create READMEs and troubleshooting guides
-- **Technical bloggers** — draft dev.to posts from talk notes
-- **SaaS engineering teams** — generate internal runbooks from Loom transcripts
+* **Developer YouTubers** — turn tutorial recordings into Docusaurus sites
+* **DevRel teams** — convert demo recordings into onboarding docs
+* **Course creators** — generate lesson pages from lecture notes
+* **Open-source maintainers** — create READMEs and troubleshooting guides
+* **Technical bloggers** — draft dev.to posts from talk notes
+* **SaaS engineering teams** — generate internal runbooks from Loom transcripts
 
 ## Next steps
 
-- [Quick Start](/docs/quick-start) — generate your first doc in under 5 minutes
-- [Installation](/docs/installation) — detailed setup instructions
-- [CLI Commands](/docs/cli-commands) — full command reference
+* [Quick Start](/docs/quick-start) — generate your first doc in under 5 minutes
+* [Installation](/docs/installation) — detailed setup instructions
+* [CLI Commands](/docs/cli-commands) — full command reference
