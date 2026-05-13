@@ -56,10 +56,12 @@ export async function validateSourceCommand(opts: ValidateSourceCommandOptions):
   // Transcript check
   if (result.transcript) {
     const t = result.transcript;
-    if (t.isLongEnough) {
+    if (!t.hasTranscript) {
+      logger.fail(`Transcript: ${opts.file}`, 'file not found');
+    } else if (t.isLongEnough) {
       logger.ok(`Transcript: ${opts.file}`, `${t.wordCount} words`);
     } else {
-      logger.fail(`Transcript: ${opts.file}`, `${t.wordCount} words (too short)`);
+      logger.fail(`Transcript: ${opts.file}`, `${t.wordCount} words (too short — minimum 150)`);
     }
     for (const w of t.warnings) {
       logger.warn(w);
@@ -80,6 +82,12 @@ export async function validateSourceCommand(opts: ValidateSourceCommandOptions):
       logger.error(e);
     }
     logger.line();
+
+    // If transcript file was missing, show intake instructions
+    const transcriptMissing = result.transcript && !result.transcript.hasTranscript;
+    if (transcriptMissing) {
+      showIntakeInstructions(opts.url);
+    }
 
     throw new DocuForgeError(
       'Source validation failed. Fix the issues above before generating.',
