@@ -27,7 +27,7 @@ description: What's done, what's next, and what's planned for devdocs-forge-agen
 
 ## In progress / good first issues
 
-- [ ] **`npm run preview`** — local browser preview of generated docs ([PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6))
+- [ ] **`npm run preview`** — local browser preview of generated docs (planned — previous PR closed, open for contribution)
 - [ ] **Ollama provider** — local LLM support ([#1](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1))
 - [ ] **OpenRouter provider** — access to 200+ models ([#2](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2))
 - [ ] **Mermaid diagram mode** — architecture diagrams from transcripts ([#3](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3))
