@@ -7,29 +7,31 @@ description: What's done, what's next, and what's planned for devdocs-forge-agen
 
 # Roadmap
 
-## Done (v0.1.0)
+## Done (v0.1.1 — current)
 
 - [x] Core generation pipeline (TypeScript, ESM, Commander)
 - [x] Mock, OpenAI, Anthropic, Gemini providers
 - [x] 11 output modes: docusaurus, blog, docs, gitbook, readme, faq, troubleshooting, lesson, social, changelog, seo
 - [x] Video Intake Guard — URL validation, tech classification, transcript requirement
+- [x] Transcript Intake Agent — clipboard, stdin paste, file import (.md/.txt/.vtt/.srt), stubs for OAuth + local media
 - [x] `inspect-url` and `validate-source` CLI commands
+- [x] `transcript` command with 5 subcommands
 - [x] `--url` and `--force` flags on generate
 - [x] `npm run demo` one-command demo in mock mode
 - [x] `npm run batch` for directory-level processing
 - [x] `npm run verify` output validation
 - [x] `npm run doctor` setup diagnostics
 - [x] Profile customization (`modes/_profile.md`)
-- [x] Zod config schema with full `video_intake` section
-- [x] 54-test Vitest suite
+- [x] Zod config schema with `video_intake` and `transcript_intake` sections
+- [x] 82-test Vitest suite (Node 22/24, Ubuntu + macOS)
 
 ## In progress / good first issues
 
+- [ ] **`npm run preview`** — local browser preview of generated docs ([PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6))
 - [ ] **Ollama provider** — local LLM support ([#1](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1))
 - [ ] **OpenRouter provider** — access to 200+ models ([#2](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2))
 - [ ] **Mermaid diagram mode** — architecture diagrams from transcripts ([#3](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3))
 - [ ] **Better Docusaurus frontmatter** — smarter tag and sidebar_label extraction ([#4](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/4))
-- [ ] **Minimal web preview** — browser preview before publishing ([#5](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/5))
 
 ## Planned (v0.2.0)
 

@@ -6,7 +6,7 @@ Want to work on something? Open an issue!
 
 ---
 
-## v0.1.x — Stability (Current)
+## v0.1.x — Stability (Current — v0.1.1)
 
 | Feature | Status |
 |---------|--------|
@@ -20,7 +20,9 @@ Want to work on something? Open an issue!
 | Test suite (Vitest) | ✅ Done |
 | Example transcripts and outputs | ✅ Done |
 | Video Intake Guard (URL validation + tech classification) | ✅ Done |
+| Transcript Intake Agent (clipboard, paste, file import) | ✅ Done |
 | One-command demo (`npm run demo`) | ✅ Done |
+| `npm run preview` — local browser doc preview | 🔄 In review ([PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6)) |
 
 ---
 

@@ -4,7 +4,7 @@
 
 **Turn tutorial transcripts into beautiful developer documentation.**
 
-[![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://typescriptlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![OpenAI](https://img.shields.io/badge/OpenAI-supported-412991)](https://platform.openai.com)
@@ -28,6 +28,18 @@
 **[📖 Website](https://ankitparekh007.github.io/devdocs-forge-agent/)** · **[🐛 Issues](https://github.com/AnkitParekh007/devdocs-forge-agent/issues)** · **[✨ Good First Issues](https://github.com/AnkitParekh007/devdocs-forge-agent/issues?q=label%3A%22good+first+issue%22)**
 
 </div>
+
+---
+
+## Current Status
+
+**devdocs-forge-agent is a v0.1.1 CLI MVP** — ready for local testing, open-source contributions, and feedback.
+
+- Runs locally from your terminal — not a hosted SaaS product
+- Mock mode generates real output with no API key required
+- Real providers (OpenAI, Anthropic, Gemini) require your own API key
+- Generated docs are first drafts — always review before publishing
+- CI tests on Node.js 22 and 24 (Ubuntu + macOS); minimum runtime: Node ≥ 18
 
 ---
 
@@ -473,6 +485,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions.
 - [x] 11 documentation output modes
 - [x] Video Intake Guard (URL validation + tech classification + transcript check)
 - [x] `npm run demo` one-command demo
+- [ ] `npm run preview` — local browser preview of generated docs (in review, [PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6))
 - [ ] Ollama provider (local LLMs)
 - [ ] OpenRouter provider
 - [ ] Browser UI (React or Angular)

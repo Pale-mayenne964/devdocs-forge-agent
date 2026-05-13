@@ -57,6 +57,6 @@ The `review-checklist.md` in every output directory includes:
 
 ## Reporting issues
 
-If you find a security issue, open a [GitHub issue](https://github.com/AnkitParekh007/devdocs-forge-agent/issues) or email the maintainer directly.
+For **security vulnerabilities**, please use [GitHub Security Advisories](https://github.com/AnkitParekh007/devdocs-forge-agent/security/advisories/new) (private disclosure) — do not open a public issue.
 
 For general bugs and feature requests, use [GitHub Issues](https://github.com/AnkitParekh007/devdocs-forge-agent/issues).

@@ -17,9 +17,7 @@
 
 If you discover a security vulnerability in devdocs-forge-agent, please **do not open a public GitHub issue**.
 
-Instead:
-1. Email: [create a security contact email or use GitHub's private vulnerability reporting]
-2. Or use [GitHub Security Advisories](https://github.com/AnkitParekh007/devdocs-forge-agent/security/advisories/new) (private disclosure)
+Instead, use [GitHub Security Advisories](https://github.com/AnkitParekh007/devdocs-forge-agent/security/advisories/new) (private disclosure).
 
 Include:
 - A description of the vulnerability

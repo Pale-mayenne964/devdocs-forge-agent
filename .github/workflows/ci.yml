@@ -40,3 +40,25 @@ jobs:
         run: npm run doctor
         env:
           DEVDOCS_PROVIDER: mock
+
+  website:
+    name: Build Website (Docusaurus)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: website/package-lock.json
+
+      - name: Install website dependencies
+        run: npm ci
+        working-directory: website
+
+      - name: Build website
+        run: npm run build
+        working-directory: website
