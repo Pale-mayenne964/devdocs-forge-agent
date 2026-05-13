@@ -485,7 +485,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions.
 - [x] 11 documentation output modes
 - [x] Video Intake Guard (URL validation + tech classification + transcript check)
 - [x] `npm run demo` one-command demo
-- [ ] `npm run preview` — local browser preview of generated docs (in review, [PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6))
+- [ ] `npm run preview` — local browser preview of generated docs (planned — previous PR closed, open for contribution)
 - [ ] Ollama provider (local LLMs)
 - [ ] OpenRouter provider
 - [ ] Browser UI (React or Angular)
