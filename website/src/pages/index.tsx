@@ -35,6 +35,19 @@ function HeroSection() {
               View source
             </Link>
           </div>
+
+          <div className={styles.localFirstNote}>
+            <p className={styles.localFirstNoteTitle}>🖥️ Runs locally from your terminal</p>
+            <p className={styles.localFirstNoteText}>
+              This website is documentation only. Clone the repo, add your transcript,
+              and generate docs from your terminal — no account required.
+            </p>
+            <div className={styles.localFirstNotePills}>
+              {['No hosted generator', 'No transcript scraping', 'No account required', 'Mock mode works offline'].map((pill) => (
+                <span key={pill} className={styles.localFirstNotePill}>{pill}</span>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className={styles.heroConsole}>
@@ -476,6 +489,63 @@ function IntakeGuardSection() {
   );
 }
 
+/* ── 9b. YouTube URL section ───────────────────────────────── */
+const YT_URL = 'https://www.youtube.com/watch?v=W6NZfCO5SIk';
+const YT_STEPS = [
+  {
+    label: 'Step 1 — Inspect a video URL (no transcript needed)',
+    cmd: `npm run devdocs-forge-agent -- inspect-url "${YT_URL}"`,
+  },
+  {
+    label: 'Step 2 — Validate URL + transcript together',
+    cmd: `npm run devdocs-forge-agent -- validate-source \\\n  --url "${YT_URL}" \\\n  --file input/my-transcript.md`,
+  },
+  {
+    label: 'Step 3 — Generate docs with the Intake Guard',
+    cmd: `npm run generate -- \\\n  --url "${YT_URL}" \\\n  --file input/my-transcript.md \\\n  --type docusaurus`,
+  },
+];
+
+function YouTubeUrlSection() {
+  return (
+    <section className={styles.youtubeSection}>
+      <div className={styles.sectionInner}>
+        <div className={styles.sectionCentered}>
+          <span className={styles.sectionLabel}>Video URL flow</span>
+          <h2 className={styles.sectionTitle}>Test with a YouTube URL safely.</h2>
+          <p className={styles.sectionSubtitle}>
+            Use the URL for metadata and validation only. DevDocs Forge Agent never scrapes
+            transcripts or downloads videos.
+          </p>
+        </div>
+        <div className={styles.youtubeFlowGroup}>
+          {YT_STEPS.map((step) => (
+            <div key={step.label} className={styles.youtubeFlowStep}>
+              <span className={styles.youtubeStepLabel}>{step.label}</span>
+              <div className={styles.youtubeTerminal}>
+                <div className={styles.youtubeTerminalBar}>
+                  <span className={clsx(styles.ytDot, styles.ytDotRed)} />
+                  <span className={clsx(styles.ytDot, styles.ytDotYellow)} />
+                  <span className={clsx(styles.ytDot, styles.ytDotGreen)} />
+                </div>
+                <div className={styles.youtubeTerminalBody}>
+                  <span className={styles.ytPrompt}>$</span>
+                  <span className={styles.ytCmd}>{step.cmd}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className={styles.youtubeNote}>
+          <strong>URL-only generation is blocked by design.</strong>{' '}
+          You must provide a transcript file you own or have permission to use.
+          DevDocs Forge Agent never auto-fetches transcript text from any URL.
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── 10. Output preview ────────────────────────────────────── */
 const OUTPUT_FILES = [
   { name: 'index.md',           desc: 'Main generated documentation — full content ready to review and publish.' },
@@ -672,6 +742,7 @@ export default function Home(): React.ReactElement {
       <FeaturesSection />
       <ProvidersSection />
       <IntakeGuardSection />
+      <YouTubeUrlSection />
       <OutputSection />
       <BuiltForSection />
       <ContributingSection />

@@ -11,7 +11,7 @@ description: Full reference for all devdocs-forge-agent CLI commands.
 
 Validates your setup. Run this first whenever something isn't working.
 
-```bash
+```bash title="Validate setup"
 npm run doctor
 ```
 
@@ -24,7 +24,7 @@ Checks: Node.js version, `package.json`, config file, `.env`, provider, API keys
 
 Creates missing files and directories. Safe to run multiple times — never overwrites existing files.
 
-```bash
+```bash title="Initialize local files"
 npm run init
 ```
 
@@ -36,7 +36,7 @@ Creates: `config/devdocs-forge-agent.yml`, `input/`, `output/`, `modes/_profile.
 
 Copies example transcripts from `examples/transcripts/` to `input/`.
 
-```bash
+```bash title="Copy example transcripts"
 npm run examples
 ```
 
@@ -46,7 +46,7 @@ npm run examples
 
 One-command demo. Runs in mock mode regardless of your `.env` setting.
 
-```bash
+```bash title="Run the demo"
 npm run demo
 ```
 
@@ -60,43 +60,37 @@ doctor → examples → generate (Angular Signals tutorial, docusaurus) → veri
 
 Generates documentation from a transcript file.
 
-```bash
-npm run generate -- --file <path> [options]
+```bash title="Generate documentation"
+npm run generate -- --file input/my-tutorial.md --type docusaurus
 ```
 
 ### Flags
 
-| Flag                  | Required | Description                                         |
-| --------------------- | -------: | --------------------------------------------------- |
-| `--file <path>`       |      Yes | Path to transcript file                             |
-| `--type <mode>`       |       No | Output mode (default from config)                   |
-| `--url <url>`         |       No | Video URL — runs intake guard; used as `sourceUrl`  |
-| `--source-url <url>`  |       No | Static source URL for attribution                   |
-| `--force`             |       No | Bypass low-confidence classification                |
+| Flag                 | Required | Description                                        |
+| -------------------- | -------: | -------------------------------------------------- |
+| `--file <path>`      |      Yes | Path to transcript file                            |
+| `--type <mode>`      |       No | Output mode, default from config                   |
+| `--url <url>`        |       No | Video URL; runs intake guard and stores source URL |
+| `--source-url <url>` |       No | Static source URL for attribution                  |
+| `--force`            |       No | Bypass low-confidence classification               |
 
-### Basic example
+### With Video Intake Guard
 
-```bash title="Generate Docusaurus docs"
-npm run generate -- --file input/my-tutorial.md --type docusaurus
-```
-
-### With video URL (runs intake guard)
-
-```bash title="Generate with video URL"
+```bash title="Generate with Video Intake Guard"
 npm run generate -- \
   --url "https://youtube.com/watch?v=..." \
   --file input/my-tutorial.md \
   --type docusaurus
 ```
 
-### Force bypass for low-confidence classification
+### URL-only generation is blocked
 
-```bash title="Force bypass"
-npm run generate -- \
-  --url "https://youtube.com/watch?v=..." \
-  --file input/my-tutorial.md \
-  --force
+```bash title="Blocked — URL-only generation"
+npm run generate -- --url "https://youtube.com/watch?v=..."
 ```
+
+This fails by design because DevDocs Forge Agent does not scrape transcripts.
+Provide `--file input/my-transcript.md` along with the URL.
 
 ### All output modes
 
@@ -120,7 +114,7 @@ See [Modes](/docs/modes) for a full description of each output type.
 
 Processes all `.md` and `.txt` files in a directory.
 
-```bash
+```bash title="Batch generation"
 npm run batch -- --dir input/
 npm run batch -- --dir input/ --type blog
 ```
@@ -131,7 +125,7 @@ npm run batch -- --dir input/ --type blog
 
 Validates generated documentation for common quality issues.
 
-```bash
+```bash title="Verify generated docs"
 npm run verify
 npm run verify -- --dir output/my-doc-2026-05-13/
 ```
@@ -142,7 +136,7 @@ npm run verify -- --dir output/my-doc-2026-05-13/
 
 Lists available providers and shows which is currently active.
 
-```bash
+```bash title="List providers"
 npm run providers
 ```
 
@@ -152,7 +146,7 @@ npm run providers
 
 Inspects and classifies a video URL. No transcript required.
 
-```bash
+```bash title="Inspect a video URL"
 npm run devdocs-forge-agent -- inspect-url "https://youtube.com/watch?v=..."
 ```
 
@@ -162,7 +156,7 @@ npm run devdocs-forge-agent -- inspect-url "https://youtube.com/watch?v=..."
 
 Validates a video URL and a local transcript file together before generation.
 
-```bash
+```bash title="Validate source URL and transcript"
 npm run devdocs-forge-agent -- validate-source \
   --url "https://youtube.com/watch?v=..." \
   --file input/my-transcript.md
@@ -174,7 +168,7 @@ npm run devdocs-forge-agent -- validate-source \
 
 Runs the Vitest test suite (54 tests).
 
-```bash
+```bash title="Run tests"
 npm test
 ```
 
@@ -184,7 +178,7 @@ npm test
 
 Compiles TypeScript to `dist/`. Required for production use of the global `devdocs-forge-agent` binary.
 
-```bash
+```bash title="Build CLI"
 npm run build
 ```
 

@@ -11,6 +11,10 @@ description: What is DevDocs Forge Agent and why does it exist?
 
 You bring the transcript. DevDocs Forge Agent generates everything else.
 
+:::note Runs locally from your terminal
+DevDocs Forge Agent is not a hosted web generator. It runs locally on your machine — clone the repo, add your transcript, and generate docs from your terminal. There is no cloud service or account required.
+:::
+
 ## What problem does it solve?
 
 Creating good developer documentation is time-consuming. Most developers have:
@@ -24,14 +28,14 @@ DevDocs Forge Agent closes the gap between "video content" and "publishable docu
 
 ## What it generates
 
-| Input                      | Output                          |
-| -------------------------- | ------------------------------- |
-| Tutorial transcript        | Step-by-step developer guide    |
-| Product demo transcript    | Help docs / onboarding page     |
-| Course lesson notes        | Lesson page with objectives     |
-| Raw learning notes         | Developer blog post             |
-| Bug walkthrough            | Troubleshooting guide           |
-| API demo                   | README tutorial                 |
+| Input                   | Output                       |
+| ----------------------- | ---------------------------- |
+| Tutorial transcript     | Step-by-step developer guide |
+| Product demo transcript | Help docs / onboarding page  |
+| Course lesson notes     | Lesson page with objectives  |
+| Raw learning notes      | Developer blog post          |
+| Bug walkthrough         | Troubleshooting guide        |
+| API demo                | README tutorial              |
 
 ## Key principles
 

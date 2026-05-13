@@ -11,17 +11,50 @@ DevDocs Forge Agent is configured via `config/devdocs-forge-agent.yml`. This fil
 
 ## Create the config
 
-```bash
+```bash title="Initialize config"
 npm run init
 ```
 
 Or copy the example:
 
-```bash
+```bash title="Copy example config"
 cp config/devdocs-forge-agent.example.yml config/devdocs-forge-agent.yml
 ```
 
-## Full reference
+## Environment variables
+
+| Variable            |           Required | Description                                                   |
+| ------------------- | -----------------: | ------------------------------------------------------------- |
+| `DEVDOCS_PROVIDER`  |                 No | Selected provider: `mock`, `openai`, `anthropic`, or `gemini` |
+| `OPENAI_API_KEY`    |    Only for OpenAI | OpenAI API key                                                |
+| `OPENAI_MODEL`      |                 No | OpenAI model name (default: `gpt-4.1-mini`)                   |
+| `ANTHROPIC_API_KEY` | Only for Anthropic | Anthropic API key                                             |
+| `ANTHROPIC_MODEL`   |                 No | Anthropic model name (default: `claude-3-5-sonnet-latest`)    |
+| `GEMINI_API_KEY`    |    Only for Gemini | Gemini API key                                                |
+| `GEMINI_MODEL`      |                 No | Gemini model name (default: `gemini-2.0-flash`)               |
+| `YOUTUBE_API_KEY`   |                 No | Optional metadata-only checks for Video Intake Guard          |
+
+Environment variables take priority over config file values.
+
+## Example `.env`
+
+```env title=".env"
+DEVDOCS_PROVIDER=mock
+
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4.1-mini
+
+ANTHROPIC_API_KEY=
+ANTHROPIC_MODEL=claude-3-5-sonnet-latest
+
+GEMINI_API_KEY=
+GEMINI_MODEL=gemini-2.0-flash
+
+# Optional — enables full metadata classification for video URLs
+YOUTUBE_API_KEY=
+```
+
+## Full config reference
 
 ```yaml title="config/devdocs-forge-agent.yml"
 project:
@@ -89,20 +122,18 @@ video_intake:
     # ... add your own
 ```
 
-## Environment variables
+## Video Intake Guard config
 
-| Variable | Description |
-|----------|-------------|
-| `DEVDOCS_PROVIDER` | AI provider: `mock`, `openai`, `anthropic`, `gemini` |
-| `OPENAI_API_KEY` | OpenAI API key |
-| `OPENAI_MODEL` | OpenAI model (default: `gpt-4.1-mini`) |
-| `ANTHROPIC_API_KEY` | Anthropic API key |
-| `ANTHROPIC_MODEL` | Anthropic model (default: `claude-3-5-sonnet-latest`) |
-| `GEMINI_API_KEY` | Gemini API key |
-| `GEMINI_MODEL` | Gemini model (default: `gemini-2.0-flash`) |
-| `YOUTUBE_API_KEY` | YouTube Data API key (optional — for video URL classification) |
+```yaml title="config/devdocs-forge-agent.yml"
+video_intake:
+  enabled: true
+  allow_url_only_generation: false
+  require_transcript: true
+  min_tech_confidence_score: 60
+  min_transcript_words: 150
+```
 
-Environment variables take priority over config file values.
+See [Video Intake Guard](/docs/video-intake-guard) for how classification scores work.
 
 ## Writing profile
 

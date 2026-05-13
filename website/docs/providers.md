@@ -7,24 +7,21 @@ description: Configure AI providers — OpenAI, Anthropic, Gemini, and mock.
 
 # Providers
 
-DevDocs Forge Agent uses a provider abstraction so you can switch AI models with one environment variable. All providers use native `fetch` — no external AI SDK packages are installed.
+DevDocs Forge Agent supports mock mode by default and can connect to OpenAI, Anthropic, or Gemini with environment variables. All providers use native `fetch` — no external AI SDK packages are installed.
 
-## Select a provider
-
-```env title=".env"
-DEVDOCS_PROVIDER=mock       # default
-DEVDOCS_PROVIDER=openai
-DEVDOCS_PROVIDER=anthropic
-DEVDOCS_PROVIDER=gemini
-```
-
-## Mock provider (default)
+## Mock provider
 
 No API key required. Returns structured placeholder markdown — perfect for development, demos, and CI.
 
-```env
+```env title=".env"
 DEVDOCS_PROVIDER=mock
 ```
+
+| Setting          | Value                              |
+| ---------------- | ---------------------------------- |
+| API key required | No                                 |
+| Best for         | Local demos, contributors, CI/CD   |
+| Output           | Deterministic placeholder docs     |
 
 Run `npm run demo` to see full output generated in mock mode.
 
@@ -32,52 +29,70 @@ Run `npm run demo` to see full output generated in mock mode.
 
 Get a key at [platform.openai.com/api-keys](https://platform.openai.com/api-keys).
 
-```env
+```env title=".env"
 DEVDOCS_PROVIDER=openai
 OPENAI_API_KEY=sk-...
 OPENAI_MODEL=gpt-4.1-mini
 ```
 
-| Model | Notes |
-|-------|-------|
-| `gpt-4.1-mini` | Fast, cheap, recommended for most use cases |
-| `gpt-4.1` | Higher quality, slower and more expensive |
-| `o4-mini` | Best reasoning — use for complex technical docs |
+| Model          | Notes                                       |
+| -------------- | ------------------------------------------- |
+| `gpt-4.1-mini` | Fast and cost-effective for docs generation |
+| `gpt-4.1`      | Higher quality, slower and more expensive   |
+| `o4-mini`      | Best reasoning — use for complex tech docs  |
 
-## Anthropic Claude
+## Anthropic
 
 Get a key at [console.anthropic.com](https://console.anthropic.com/).
 
-```env
+```env title=".env"
 DEVDOCS_PROVIDER=anthropic
 ANTHROPIC_API_KEY=sk-ant-...
 ANTHROPIC_MODEL=claude-3-5-sonnet-latest
 ```
 
-| Model | Notes |
-|-------|-------|
-| `claude-3-5-sonnet-latest` | Best overall quality |
-| `claude-3-5-haiku-latest` | Faster and cheaper |
-| `claude-opus-4-5` | Highest capability |
+| Model                      | Notes                                          |
+| -------------------------- | ---------------------------------------------- |
+| `claude-3-5-sonnet-latest` | Strong technical writing and structured output |
+| `claude-3-5-haiku-latest`  | Faster, cheaper drafts                         |
+| `claude-opus-4-5`          | Highest capability                             |
 
 ## Google Gemini
 
 Get a key at [aistudio.google.com](https://aistudio.google.com/).
 
-```env
+```env title=".env"
 DEVDOCS_PROVIDER=gemini
 GEMINI_API_KEY=...
 GEMINI_MODEL=gemini-2.0-flash
 ```
 
-| Model | Notes |
-|-------|-------|
-| `gemini-2.0-flash` | Fast and cost-effective |
-| `gemini-1.5-pro` | Higher quality |
+| Model              | Notes                                |
+| ------------------ | ------------------------------------ |
+| `gemini-2.0-flash` | Fast and cost-effective generation   |
+| `gemini-1.5-pro`   | More capable long-context generation |
+
+## Provider selection
+
+Switch between providers with one environment variable:
+
+```env title=".env"
+DEVDOCS_PROVIDER=mock       # default — no key needed
+DEVDOCS_PROVIDER=openai
+DEVDOCS_PROVIDER=anthropic
+DEVDOCS_PROVIDER=gemini
+```
+
+| Provider  | Environment variable         | API key required |
+| --------- | ---------------------------- | ---------------: |
+| Mock      | `DEVDOCS_PROVIDER=mock`      |               No |
+| OpenAI    | `DEVDOCS_PROVIDER=openai`    |              Yes |
+| Anthropic | `DEVDOCS_PROVIDER=anthropic` |              Yes |
+| Gemini    | `DEVDOCS_PROVIDER=gemini`    |              Yes |
 
 ## List available providers
 
-```bash
+```bash title="List providers"
 npm run providers
 ```
 
@@ -85,7 +100,7 @@ npm run providers
 
 Each provider implements a simple interface:
 
-```typescript
+```typescript title="src/providers/example.provider.ts"
 export interface Provider {
   readonly name: string;
   readonly model: string;

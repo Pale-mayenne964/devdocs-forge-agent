@@ -298,6 +298,149 @@
   gap: 6px;
 }
 
+/* ── Local-first note (inside hero) ───────────────────────── */
+.localFirstNote {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  background: var(--ai-surface);
+  border: 1px solid var(--ai-border);
+  border-left: 3px solid var(--ai-cyan);
+  border-radius: 10px;
+  max-width: 440px;
+}
+
+[data-theme='dark'] .localFirstNote {
+  backdrop-filter: blur(12px);
+}
+
+.localFirstNoteTitle {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ai-text-strong);
+  margin: 0 0 0.35rem;
+  letter-spacing: 0.01em;
+}
+
+.localFirstNoteText {
+  font-size: 0.8rem;
+  color: var(--ai-muted);
+  margin: 0 0 0.65rem;
+  line-height: 1.6;
+}
+
+.localFirstNotePills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.localFirstNotePill {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(8, 145, 178, 0.07);
+  border: 1px solid rgba(8, 145, 178, 0.2);
+  color: var(--ai-cyan);
+  white-space: nowrap;
+}
+
+[data-theme='dark'] .localFirstNotePill {
+  background: rgba(34, 211, 238, 0.07);
+  border-color: rgba(34, 211, 238, 0.2);
+}
+
+/* ── YouTube URL section ───────────────────────────────────── */
+.youtubeSection {
+  padding: 5rem 2rem;
+  background: var(--ai-bg);
+  border-top: 1px solid var(--ai-border);
+  border-bottom: 1px solid var(--ai-border);
+}
+
+.youtubeFlowGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.youtubeFlowStep {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.youtubeStepLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ai-muted);
+  padding-left: 0.25rem;
+}
+
+/* YouTube terminal window — reuses terminal dark aesthetic */
+.youtubeTerminal {
+  background: var(--ai-terminal-bg);
+  border: 1px solid var(--ai-terminal-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.youtubeTerminalBar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 13px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--ai-terminal-border);
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.7rem;
+  color: var(--ai-terminal-faint);
+}
+
+.ytDot { width: 9px; height: 9px; border-radius: 50%; }
+.ytDotRed    { background: #ff5f57; }
+.ytDotYellow { background: #febc2e; }
+.ytDotGreen  { background: #28c840; }
+
+.youtubeTerminalBody {
+  padding: 1rem 1.25rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.82rem;
+  line-height: 2;
+  color: var(--ai-terminal-text);
+}
+
+.ytPrompt { color: #22d3ee; user-select: none; margin-right: 0.5rem; }
+.ytCmd    { color: var(--ai-terminal-text); }
+.ytCmdDim { color: var(--ai-terminal-muted); }
+
+.youtubeNote {
+  margin: 1.5rem auto 0;
+  max-width: 700px;
+  padding: 0.75rem 1.1rem;
+  background: rgba(220, 38, 38, 0.04);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  color: var(--ai-muted);
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .youtubeNote {
+  background: rgba(239, 68, 68, 0.04);
+  border-color: rgba(239, 68, 68, 0.18);
+}
+
+.youtubeNote strong {
+  color: var(--ai-red);
+}
+
 /* ── 2. Trust strip ────────────────────────────────────────── */
 .trustStrip {
   background: var(--ai-surface-solid);

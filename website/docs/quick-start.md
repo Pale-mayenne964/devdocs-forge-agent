@@ -11,9 +11,9 @@ Generate your first doc in under 5 minutes. No API key needed.
 
 ## Prerequisites
 
-- Node.js 18 or later
-- npm 9 or later
-- Git
+* Node.js 18 or later
+* npm 9 or later
+* Git
 
 ```bash title="Check prerequisites"
 node --version   # v18.x.x or higher
@@ -68,13 +68,13 @@ output/angular-signals-tutorial-2026-05-13/
     └── angular-signals-tutorial.md
 ```
 
-| File | Purpose |
-| ---- | ------- |
-| `index.md` | Main generated documentation |
-| `metadata.json` | Provider, model, timestamp, and warnings |
-| `review-checklist.md` | Human review checklist before publishing |
-| `source-summary.md` | Source stats and attribution summary |
-| `docs/angular-signals-tutorial.md` | Docusaurus-ready page with frontmatter |
+| File                               | Purpose                                  |
+| ---------------------------------- | ---------------------------------------- |
+| `index.md`                         | Main generated documentation             |
+| `metadata.json`                    | Provider, model, timestamp, and warnings |
+| `review-checklist.md`              | Human review checklist before publishing |
+| `source-summary.md`                | Source stats and attribution summary     |
+| `docs/angular-signals-tutorial.md` | Docusaurus-ready page with frontmatter   |
 
 ## 5. Generate from your own transcript
 
@@ -91,6 +91,46 @@ npm run generate -- --file input/my-tutorial.md --type blog
 npm run generate -- --file input/my-tutorial.md --type faq
 npm run generate -- --file input/my-tutorial.md --type readme
 ```
+
+## Test with a YouTube URL
+
+DevDocs Forge Agent does not scrape YouTube transcripts or download videos.
+A video URL is used only for metadata, source attribution, and safety checks.
+You must provide your own transcript file.
+
+### 1. Inspect a video URL
+
+```bash title="Inspect a video URL"
+npm run devdocs-forge-agent -- inspect-url "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+```
+
+### 2. Validate URL + transcript together
+
+```bash title="Validate source URL and transcript"
+npm run devdocs-forge-agent -- validate-source \
+  --url "https://www.youtube.com/watch?v=W6NZfCO5SIk" \
+  --file input/my-transcript.md
+```
+
+### 3. Generate docs safely
+
+```bash title="Generate docs with Video Intake Guard"
+npm run generate -- \
+  --url "https://www.youtube.com/watch?v=W6NZfCO5SIk" \
+  --file input/my-transcript.md \
+  --type docusaurus
+```
+
+:::info URL-only generation is blocked
+This command intentionally fails because no transcript file is provided:
+
+```bash
+npm run generate -- --url "https://www.youtube.com/watch?v=W6NZfCO5SIk"
+```
+
+DevDocs Forge Agent requires `--file input/my-transcript.md` to avoid scraping
+and hallucinated documentation.
+:::
 
 ## Switch to a real AI provider
 
@@ -111,12 +151,13 @@ npm run generate -- --file input/my-tutorial.md --type docusaurus
 See [Providers](/docs/providers) for Anthropic and Gemini setup.
 
 :::tip Mock mode first
-Always test with mock mode before spending API credits. Mock mode generates the full file structure with placeholder content so you can verify the workflow works.
+Always test with mock mode before spending API credits. Mock mode generates the full
+file structure with placeholder content so you can verify the workflow works.
 :::
 
 ## Next steps
 
-- [Installation](/docs/installation) — full setup options
-- [Modes](/docs/modes) — all 11 output modes explained
-- [CLI Commands](/docs/cli-commands) — full command reference
-- [Providers](/docs/providers) — switch to a real AI provider
+* [Installation](/docs/installation) — full setup options
+* [Modes](/docs/modes) — all 11 output modes explained
+* [CLI Commands](/docs/cli-commands) — full command reference
+* [Providers](/docs/providers) — switch to a real AI provider
