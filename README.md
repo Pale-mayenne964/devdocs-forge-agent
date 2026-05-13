@@ -4,7 +4,7 @@
 
 **Turn tutorial transcripts into beautiful developer documentation.**
 
-[![Node.js](https://img.shields.io/badge/node-%3E%3D18-brightgreen)](https://nodejs.org)
+[![Node.js](https://img.shields.io/badge/node-%3E%3D22-brightgreen)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://typescriptlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow)](LICENSE)
 [![OpenAI](https://img.shields.io/badge/OpenAI-supported-412991)](https://platform.openai.com)
@@ -85,14 +85,14 @@ It creates a strong first draft and a structured review process, not a replaceme
 
 Turn messy learning material into structured docs developers can search, review, commit, and improve.
 
-| Before | After |
-|--------|-------|
+| Before              | After                        |
+|---------------------|------------------------------|
 | Tutorial transcript | Step-by-step Docusaurus page |
-| Product demo notes | Help documentation |
-| Course lesson | Lesson page with objectives |
-| Raw learning notes | Blog post + FAQ |
-| Bug walkthrough | Troubleshooting guide |
-| API demo transcript | README tutorial |
+| Product demo notes  | Help documentation           |
+| Course lesson       | Lesson page with objectives  |
+| Raw learning notes  | Blog post + FAQ              |
+| Bug walkthrough     | Troubleshooting guide        |
+| API demo transcript | README tutorial              |
 
 ---
 
@@ -130,14 +130,14 @@ No YouTube scraping. No video downloading. No account required. Works entirely o
 
 ## Perfect For
 
-| Who | Use case |
-|-----|----------|
-| **Developer YouTubers** | Turn tutorial recordings into Docusaurus sites |
-| **DevRel teams** | Convert demo recordings into onboarding docs |
-| **Course creators** | Generate lesson pages from lecture notes |
-| **Open-source maintainers** | Create READMEs and troubleshooting guides from issue walkthroughs |
-| **Technical bloggers** | Draft dev.to and Hashnode posts from talk notes |
-| **SaaS engineering teams** | Generate internal runbooks from Loom transcripts |
+| Who                          | Use case                                                          |
+|------------------------------|-------------------------------------------------------------------|
+| **Developer YouTubers**      | Turn tutorial recordings into Docusaurus sites                    |
+| **DevRel teams**             | Convert demo recordings into onboarding docs                      |
+| **Course creators**          | Generate lesson pages from lecture notes                          |
+| **Open-source maintainers**  | Create READMEs and troubleshooting guides from issue walkthroughs |
+| **Technical bloggers**       | Draft dev.to and Hashnode posts from talk notes                   |
+| **SaaS engineering teams**   | Generate internal runbooks from Loom transcripts                  |
 
 ---
 
@@ -311,19 +311,19 @@ Run `npm run verify` to validate all outputs before publishing.
 
 ## Modes
 
-| Mode | Command | What It Generates |
-|------|---------|-------------------|
-| `docusaurus` | `--type docusaurus` | Docusaurus v3 page with frontmatter |
-| `blog` | `--type blog` | Developer blog post with SEO |
-| `docs` | `--type docs` | General documentation page |
-| `gitbook` | `--type gitbook` | GitBook-formatted doc with hints |
-| `readme` | `--type readme` | GitHub README tutorial |
-| `faq` | `--type faq` | FAQ organized by category |
-| `troubleshooting` | `--type troubleshooting` | Error/fix troubleshooting guide |
-| `lesson` | `--type lesson` | Course lesson with objectives |
-| `social` | `--type social` | LinkedIn + X + dev.to summaries |
-| `changelog` | `--type changelog` | Keep A Changelog format release notes |
-| `seo` | `--type seo` | SEO metadata and keyword analysis |
+| Mode              | Command                  | What It Generates                     |
+|-------------------|--------------------------|---------------------------------------|
+| `docusaurus`      | `--type docusaurus`      | Docusaurus v3 page with frontmatter   |
+| `blog`            | `--type blog`            | Developer blog post with SEO          |
+| `docs`            | `--type docs`            | General documentation page            |
+| `gitbook`         | `--type gitbook`         | GitBook-formatted doc with hints      |
+| `readme`          | `--type readme`          | GitHub README tutorial                |
+| `faq`             | `--type faq`             | FAQ organized by category             |
+| `troubleshooting` | `--type troubleshooting` | Error/fix troubleshooting guide       |
+| `lesson`          | `--type lesson`          | Course lesson with objectives         |
+| `social`          | `--type social`          | LinkedIn + X + dev.to summaries       |
+| `changelog`       | `--type changelog`       | Keep A Changelog format release notes |
+| `seo`             | `--type seo`             | SEO metadata and keyword analysis     |
 
 ---
 
@@ -441,14 +441,14 @@ Full documentation is available at:
 
 We welcome all kinds of contributions:
 
-| Type | How |
-|------|-----|
-| **Good first issue** | Browse issues labeled `good first issue` |
-| **Add a provider** | Create `src/providers/yourprovider.provider.ts` |
-| **Add a mode** | Create `modes/yourmode.md` — no TypeScript needed |
-| **Improve prompts** | Edit mode files in `modes/` |
-| **Add examples** | Add transcripts to `examples/transcripts/` |
-| **Improve docs** | Edit files in `website/docs/` or `docs/` |
+| Type                  | How                                                     |
+|-----------------------|---------------------------------------------------------|
+| **Good first issue**  | Browse issues labeled `good first issue`                |
+| **Add a provider**    | Create `src/providers/yourprovider.provider.ts`         |
+| **Add a mode**        | Create `modes/yourmode.md` — no TypeScript needed       |
+| **Improve prompts**   | Edit mode files in `modes/`                             |
+| **Add examples**      | Add transcripts to `examples/transcripts/`              |
+| **Improve docs**      | Edit files in `website/docs/` or `docs/`               |
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions.
 
@@ -456,13 +456,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions.
 
 ## Good First Issues
 
-| Issue | Description |
-|-------|-------------|
-| [#1 Ollama provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1) | Add local LLM support |
-| [#2 OpenRouter provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2) | Access 200+ models |
-| [#3 Mermaid diagram mode](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3) | New output mode |
+| Issue                                                                                                | Description            |
+|------------------------------------------------------------------------------------------------------|------------------------|
+| [#1 Ollama provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1)                | Add local LLM support  |
+| [#2 OpenRouter provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2)            | Access 200+ models     |
+| [#3 Mermaid diagram mode](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3)           | New output mode        |
 | [#4 Improve Docusaurus frontmatter](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/4) | Smarter tag extraction |
-| [#5 Minimal web preview](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/5) | Browser preview |
+| [#5 Minimal web preview](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/5)            | Browser preview        |
 
 ---
 
