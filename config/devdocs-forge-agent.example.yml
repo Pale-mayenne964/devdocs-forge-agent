@@ -80,3 +80,20 @@ video_intake:
     - vlog
     - reaction
     - gaming
+
+transcript_intake:
+  enabled: true
+  # default_method: interactive (not yet implemented — use explicit subcommands)
+  allow_clipboard: true
+  allow_paste: true
+  allow_file_import: true
+  # Requires OAuth setup — see docs/TRANSCRIPT_INTAKE.md
+  allow_youtube_owner_oauth: false
+  # Requires whisper.cpp or OpenAI Whisper API — see docs/TRANSCRIPT_INTAKE.md
+  allow_local_media_transcription: false
+  # NEVER enable — devdocs-forge-agent does not scrape public transcripts
+  allow_public_youtube_scraping: false
+  min_words: 150
+  warn_words: 500
+  output_dir: "input/transcripts"
+  preserve_original: true

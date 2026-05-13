@@ -2,14 +2,24 @@ import { runIntakeValidation } from '../../intake/intake-validator.js';
 import { loadConfig } from '../../config/config.loader.js';
 import { logger } from '../../utils/logger.js';
 import { DocuForgeError } from '../../utils/errors.js';
+import { showIntakeInstructions } from './transcript.command.js';
 
 interface ValidateSourceCommandOptions {
   url: string;
-  file: string;
+  file?: string;
 }
 
 export async function validateSourceCommand(opts: ValidateSourceCommandOptions): Promise<void> {
   logger.section('devdocs-forge-agent validate-source');
+
+  if (!opts.file) {
+    showIntakeInstructions(opts.url);
+    throw new DocuForgeError(
+      '--file is required for validate-source.',
+      'MISSING_TRANSCRIPT',
+      'devdocs-forge-agent does not scrape YouTube transcripts.',
+    );
+  }
 
   const config = loadConfig();
 
@@ -70,12 +80,6 @@ export async function validateSourceCommand(opts: ValidateSourceCommandOptions):
       logger.error(e);
     }
     logger.line();
-
-    if (!result.transcriptValid && !opts.file) {
-      logger.dim('devdocs-forge-agent does not scrape YouTube transcripts.');
-      logger.dim(`Provide your transcript file with --file:`);
-      logger.dim(`  npm run devdocs-forge-agent -- validate-source --url "${opts.url}" --file input/your-transcript.md`);
-    }
 
     throw new DocuForgeError(
       'Source validation failed. Fix the issues above before generating.',

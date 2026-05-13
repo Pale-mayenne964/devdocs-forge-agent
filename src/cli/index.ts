@@ -16,6 +16,13 @@ import { batchCommand } from './commands/batch.command.js';
 import { verifyCommand } from './commands/verify.command.js';
 import { inspectUrlCommand } from './commands/inspect-url.command.js';
 import { validateSourceCommand } from './commands/validate-source.command.js';
+import {
+  transcriptPasteCommand,
+  transcriptClipboardCommand,
+  transcriptImportFileCommand,
+  transcriptYouTubeOwnerCommand,
+  transcriptTranscribeFileCommand,
+} from './commands/transcript.command.js';
 
 const require = createRequire(import.meta.url);
 const pkg = require('../../package.json') as { version: string; description: string };
@@ -53,12 +60,62 @@ program
   .argument('<url>', 'Video URL to inspect (YouTube or Vimeo)')
   .action((url: string) => inspectUrlCommand({ url }).catch(handleError));
 
+const transcript = program
+  .command('transcript')
+  .description('Import a transcript into the input directory using a safe local method');
+
+transcript
+  .command('paste')
+  .description('Paste transcript from stdin (end with :::end on a new line)')
+  .option('--url <url>', 'Source video URL for attribution')
+  .requiredOption('--out <path>', 'Output file path', 'input/transcript.md')
+  .action((opts: { url?: string; out: string }) =>
+    transcriptPasteCommand(opts).catch(handleError),
+  );
+
+transcript
+  .command('clipboard')
+  .description('Import transcript from system clipboard')
+  .option('--url <url>', 'Source video URL for attribution')
+  .requiredOption('--out <path>', 'Output file path', 'input/transcript.md')
+  .action((opts: { url?: string; out: string }) =>
+    transcriptClipboardCommand(opts).catch(handleError),
+  );
+
+transcript
+  .command('import-file')
+  .description('Import transcript from a local file (.md, .txt, .vtt, .srt)')
+  .requiredOption('--from <path>', 'Source transcript file to import')
+  .option('--url <url>', 'Source video URL for attribution')
+  .requiredOption('--out <path>', 'Output file path', 'input/transcript.md')
+  .action((opts: { from: string; url?: string; out: string }) =>
+    transcriptImportFileCommand(opts).catch(handleError),
+  );
+
+transcript
+  .command('youtube-owner')
+  .description('Download captions via YouTube owner OAuth (requires video ownership)')
+  .requiredOption('--url <url>', 'YouTube video URL (must be your own video)')
+  .requiredOption('--out <path>', 'Output file path', 'input/transcript.md')
+  .action((opts: { url: string; out: string }) =>
+    transcriptYouTubeOwnerCommand(opts).catch(handleError),
+  );
+
+transcript
+  .command('transcribe-file')
+  .description('Transcribe a local audio/video file (mp3, mp4, wav, etc.)')
+  .requiredOption('--file <path>', 'Local media file to transcribe')
+  .requiredOption('--out <path>', 'Output file path', 'input/transcript.md')
+  .action((opts: { file: string; out: string }) =>
+    transcriptTranscribeFileCommand(opts).catch(handleError),
+  );
+
 program
   .command('validate-source')
   .description('Validate a video URL + local transcript file before generation')
   .requiredOption('--url <url>', 'Video URL to validate')
-  .requiredOption('--file <path>', 'Local transcript file to validate')
-  .action((opts: { url: string; file: string }) =>
+  .option('--file <path>', 'Local transcript file to validate')
+  .action((opts: { url: string; file?: string }) =>
     validateSourceCommand(opts).catch(handleError),
   );
 

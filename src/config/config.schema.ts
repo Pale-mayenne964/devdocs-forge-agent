@@ -83,7 +83,25 @@ export const ConfigSchema = z.object({
         ]),
     })
     .default({}),
+
+  transcript_intake: z
+    .object({
+      enabled: z.boolean().default(true),
+      default_method: z.string().default('interactive'),
+      allow_clipboard: z.boolean().default(true),
+      allow_paste: z.boolean().default(true),
+      allow_file_import: z.boolean().default(true),
+      allow_youtube_owner_oauth: z.boolean().default(false),
+      allow_local_media_transcription: z.boolean().default(false),
+      allow_public_youtube_scraping: z.boolean().default(false),
+      min_words: z.number().int().default(150),
+      warn_words: z.number().int().default(500),
+      output_dir: z.string().default('input/transcripts'),
+      preserve_original: z.boolean().default(true),
+    })
+    .default({}),
 });
 
 export type DocuForgeConfig = z.infer<typeof ConfigSchema>;
 export type VideoIntakeConfig = z.infer<typeof ConfigSchema>['video_intake'];
+export type TranscriptIntakeConfig = z.infer<typeof ConfigSchema>['transcript_intake'];

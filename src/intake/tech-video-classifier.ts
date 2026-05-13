@@ -10,6 +10,11 @@ const DEFAULT_TECH_KEYWORDS = [
   'tutorial', 'course', 'walkthrough', 'coding', 'build', 'crash course',
   'programming', 'developer', 'software', 'framework', 'library',
   'ci/cd', 'github actions', 'testing', 'deployment',
+  // AI coding tools and agentic workflows
+  'cursor', 'coding agent', 'coding agents', 'ai coding', 'claude code',
+  'codex', 'github copilot', 'agentic coding', 'code assistant',
+  'llm coding', 'software engineering', 'programming workflow',
+  'developer tools', 'ide',
 ];
 
 const DEFAULT_BLOCKED_KEYWORDS = [
@@ -54,6 +59,13 @@ export function classifyTechVideo(
   if (strongTechInTitle) {
     score += 30;
     positiveSignals.push(`title contains "${strongTechInTitle}" (+30)`);
+  }
+
+  // Multi-keyword title bonus: 2+ tech keywords in title (+20)
+  const techKeywordsInTitle = techKeywords.filter((kw) => titleLower.includes(kw));
+  if (techKeywordsInTitle.length >= 2) {
+    score += 20;
+    positiveSignals.push(`title has ${techKeywordsInTitle.length} tech keywords (+20)`);
   }
 
   // Description has technical keyword (+20, once)

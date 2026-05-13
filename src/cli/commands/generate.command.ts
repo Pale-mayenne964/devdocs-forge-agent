@@ -3,6 +3,7 @@ import { runIntakeValidation } from '../../intake/intake-validator.js';
 import { loadConfig } from '../../config/config.loader.js';
 import { logger } from '../../utils/logger.js';
 import { DocuForgeError } from '../../utils/errors.js';
+import { showIntakeInstructions } from './transcript.command.js';
 
 interface GenerateCommandOptions {
   file?: string;
@@ -18,14 +19,11 @@ export async function generateCommand(opts: GenerateCommandOptions): Promise<voi
   // Must have at least --file
   if (!opts.file) {
     if (opts.url) {
+      showIntakeInstructions(opts.url);
       throw new DocuForgeError(
         '--url requires --file for the transcript.',
         'MISSING_TRANSCRIPT',
-        [
-          'devdocs-forge-agent does not scrape YouTube transcripts.',
-          'Please provide your transcript file:',
-          `  npm run generate -- --url "${opts.url}" --file input/your-transcript.md --type docusaurus`,
-        ].join('\n  '),
+        'devdocs-forge-agent does not scrape YouTube transcripts.',
       );
     }
     throw new DocuForgeError(

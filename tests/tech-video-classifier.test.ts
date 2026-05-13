@@ -121,4 +121,42 @@ describe('classifyTechVideo', () => {
     });
     expect(after.score - before.score).toBe(20);
   });
+
+  // ── AI coding tools (new keywords) ───────────────────────
+  it('gives high confidence for "Cursor: coding agents tutorial (2026)"', () => {
+    const result = classifyTechVideo({
+      title: 'Cursor: coding agents tutorial (2026)',
+      durationSeconds: 600,
+    });
+    // "cursor" (+30 strong tech) + "coding agents" (2+ keywords → +20 multi) + duration (+10) = 60
+    expect(result.score).toBeGreaterThanOrEqual(60);
+    expect(result.confidence).toBe('high');
+    expect(result.isLikelyTechVideo).toBe(true);
+  });
+
+  it('gives high confidence for AI coding tool titles', () => {
+    const result = classifyTechVideo({
+      title: 'Claude Code: agentic coding workflow tutorial',
+      durationSeconds: 900,
+    });
+    expect(result.score).toBeGreaterThanOrEqual(60);
+    expect(result.confidence).toBe('high');
+  });
+
+  // ── Multi-keyword title bonus ─────────────────────────────
+  it('awards +20 multi-keyword bonus when title has 2+ tech keywords', () => {
+    // "coding" alone: +30 strong tech, +10 duration = 40 (medium)
+    const single = classifyTechVideo({
+      title: 'My coding session today',
+      durationSeconds: 600,
+    });
+    // "coding agents" = 2 keywords: +30 strong tech + +20 multi + +10 duration = 60 (high)
+    const multi = classifyTechVideo({
+      title: 'coding agents walkthrough',
+      durationSeconds: 600,
+    });
+    expect(multi.score).toBeGreaterThan(single.score);
+    const hasMultiSignal = multi.positiveSignals.some((s) => s.includes('tech keywords'));
+    expect(hasMultiSignal).toBe(true);
+  });
 });
