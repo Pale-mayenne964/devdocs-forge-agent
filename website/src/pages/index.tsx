@@ -112,7 +112,7 @@ function HeroSection() {
 /* ── 2. Trust strip ────────────────────────────────────────── */
 const TRUST_ITEMS = [
   { icon: '⚖️',  label: 'MIT License' },
-  { icon: '✅',  label: '54 tests passing' },
+  { icon: '✅',  label: '82 tests passing' },
   { icon: '🚫',  label: 'No YouTube scraping' },
   { icon: '🤖',  label: '4 AI providers' },
   { icon: '🖥️',  label: 'Local-first' },
