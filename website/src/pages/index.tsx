@@ -81,7 +81,7 @@ function HeroSection() {
               </div>
               <div className={styles.consoleStep}>
                 <span className={styles.consoleCheck}>✓</span>
-                <span>Generating with claude-3.5-sonnet</span>
+                <span>Generating with mock provider</span>
               </div>
               <div className={styles.consoleStep}>
                 <span className={styles.consoleCheck}>✓</span>
