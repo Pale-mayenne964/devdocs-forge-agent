@@ -22,7 +22,7 @@ Want to work on something? Open an issue!
 | Video Intake Guard (URL validation + tech classification) | ✅ Done |
 | Transcript Intake Agent (clipboard, paste, file import) | ✅ Done |
 | One-command demo (`npm run demo`) | ✅ Done |
-| `npm run preview` — local browser doc preview | 🔄 In review ([PR #6](https://github.com/AnkitParekh007/devdocs-forge-agent/pull/6)) |
+| `npm run preview` — local browser doc preview | Planned — previous PR closed, open for contribution |
 
 ---
 

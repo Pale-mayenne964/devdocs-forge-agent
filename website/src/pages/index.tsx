@@ -13,7 +13,7 @@ function HeroSection() {
       <div className={styles.gridBg} />
       <div className={styles.heroLayout}>
         <div className={styles.heroLeft}>
-          <div className={styles.heroBadge}>v0.1.0 · CLI MVP · MIT · Local-first</div>
+          <div className={styles.heroBadge}>v0.1.1 · CLI MVP · MIT · Local-first</div>
           <h1 className={styles.heroTitle}>
             <span className={styles.heroGradient}>DevDocs Forge Agent</span>
           </h1>
@@ -112,7 +112,7 @@ function HeroSection() {
 /* ── 2. Trust strip ────────────────────────────────────────── */
 const TRUST_ITEMS = [
   { icon: '⚖️',  label: 'MIT License' },
-  { icon: '✅',  label: '54 tests passing' },
+  { icon: '✅',  label: '82 tests passing' },
   { icon: '🚫',  label: 'No YouTube scraping' },
   { icon: '🤖',  label: '4 AI providers' },
   { icon: '🖥️',  label: 'Local-first' },
