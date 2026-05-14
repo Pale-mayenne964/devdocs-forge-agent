@@ -372,30 +372,53 @@ Angular 17 introduced Signals as a stable reactive primitive...
 
 ## How It Works
 
+```mermaid
+flowchart TD
+    A["Transcript Input\n(--file input/tutorial.md)"] --> B["Safety / Intake Guard\n(URL validate · tech classify · transcript check)"]
+    B --> C["Mode Selector\n(--type docusaurus|blog|faq|...)"]
+    C --> D["Prompt Builder\n(_shared.md + _profile.md + mode.md + config)"]
+    D --> E["Provider Adapter\nmock | OpenAI | Anthropic | Gemini"]
+    E --> F["Markdown Generator\n(index.md · docs/{slug}.md)"]
+    F --> G["Review Checklist\n(review-checklist.md · metadata.json · source-summary.md)"]
+    G --> H["Docs Site\n(Docusaurus · GitBook · GitHub · Blog)"]
 ```
-Transcript / Notes
-       ↓
-  Source Parser
-  (extract title, source URL, content)
-       ↓
-  Video Intake Guard (if --url provided)
-  (URL validate → metadata fetch → tech classify)
-       ↓
-  Mode Prompt Builder
-  (shared rules + user profile + mode template)
-       ↓
-  Provider Adapter
-  (mock / OpenAI / Anthropic / Gemini)
-       ↓
-  Markdown Generator
-  (index.md + type-specific files)
-       ↓
-  Review Checklist
-  (review-checklist.md + metadata.json)
-       ↓
-  Output Files
-  (output/{slug}-{date}/)
-```
+
+---
+
+## What This Proves
+
+> For recruiters, hiring managers, and anyone evaluating AI developer tooling skills.
+
+devdocs-forge-agent is not a toy project. It is a working CLI tool with a real user experience, a test suite, CI/CD, and documentation — built to demonstrate specific engineering capabilities:
+
+| Capability | Where to Look |
+|---|---|
+| **Provider abstraction pattern** | `src/providers/provider.types.ts` + `provider-registry.ts` — one interface, four implementations, zero coupling |
+| **Pipeline orchestration** | `src/pipeline/generation-pipeline.ts` — clear single-responsibility stages |
+| **Prompt engineering as code** | `modes/` folder — modular, human-editable prompt files that non-engineers can contribute to |
+| **Zod schema validation** | `src/config/config.schema.ts` — typed config with clear error messages |
+| **CLI design with Commander.js** | `src/cli/index.ts` + 10 command files |
+| **Native fetch, no SDK bloat** | `src/providers/openai.provider.ts` — auditable, minimal, fast install |
+| **AI-safe output design** | Every run produces `review-checklist.md` + `metadata.json` with `reviewRequired: true` |
+| **Test suite without mocking FS** | `tests/` — 9 test files covering core logic |
+| **CI on 4 environments** | Ubuntu + macOS × Node 22 + 24 |
+
+Run the project in 5 minutes: `git clone` → `npm install` → `npm run demo`.
+
+See [`docs/recruiter-review-guide.md`](docs/recruiter-review-guide.md) for a full evaluation walkthrough.
+
+---
+
+## Why Developers Star This
+
+- **Zero-config demo** — `npm run demo` works with no API key, generates real output
+- **BYO model** — OpenAI, Anthropic, Gemini, or local Ollama (planned) — no provider lock-in
+- **Markdown-first** — outputs drop directly into Docusaurus, GitBook, GitHub, or any Markdown-based docs site
+- **Prompt engineering as text files** — the `modes/` folder is plain Markdown, not code. Anyone can improve the prompts
+- **Review-first by design** — every output includes a human review checklist before publishing
+- **Agent-friendly** — `AGENTS.md` and `CLAUDE.md` make AI-assisted development workflows first-class
+- **9 labeled good first issues** — contributor onramp is real, not aspirational
+- **Local-first, no telemetry** — nothing leaves your machine except your own API calls
 
 ---
 
@@ -468,13 +491,19 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full setup instructions.
 
 ## Good First Issues
 
-| Issue                                                                                                | Description            |
-|------------------------------------------------------------------------------------------------------|------------------------|
-| [#1 Ollama provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1)                | Add local LLM support  |
-| [#2 OpenRouter provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2)            | Access 200+ models     |
-| [#3 Mermaid diagram mode](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3)           | New output mode        |
-| [#4 Improve Docusaurus frontmatter](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/4) | Smarter tag extraction |
-| [#5 Minimal web preview](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/5)            | Browser preview        |
+| Issue | Description | Difficulty |
+|---|---|---|
+| [#1 Ollama provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/1) | Add local LLM support — no API key | Low (~80 lines) |
+| [#2 OpenRouter provider](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/2) | Access 200+ models via unified API | Low (~60 lines) |
+| [#3 Mermaid diagram mode](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/3) | New `--type diagram` output mode | Low (prompt + config) |
+| [#4 Improve Docusaurus frontmatter](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/4) | Custom fields, tag merging, draft support | Low–Medium |
+| [#5 Minimal web preview](https://github.com/AnkitParekh007/devdocs-forge-agent/issues/5) | `npm run preview` browser preview | Medium |
+| GitBook export polish | Hint blocks, page-refs, tab blocks | Low (prompt work) |
+| Docusaurus sidebar helper | Auto-generate sidebar config snippet | Low–Medium |
+| Transcript chunking | Split long transcripts for LLM context limits | Medium |
+| Docs quality score | Heuristic quality score in `npm run verify` | Medium |
+
+See [`docs/GOOD_FIRST_ISSUES.md`](docs/GOOD_FIRST_ISSUES.md) for full specs and acceptance criteria.
 
 ---
 

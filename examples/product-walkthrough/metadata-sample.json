@@ -1,0 +1,20 @@
+{
+  "provider": "mock",
+  "model": "mock-v1",
+  "mode": "docs",
+  "sourceFile": "examples/product-walkthrough/input.md",
+  "sourceUrl": null,
+  "title": "StreamlineHQ Product Demo Walkthrough",
+  "slug": "streamlinehq-getting-started",
+  "wordCount": 298,
+  "outputWordCount": 412,
+  "generatedAt": "2026-05-14T09:02:00.000Z",
+  "outputDir": "output/streamlinehq-getting-started-2026-05-14",
+  "reviewRequired": true,
+  "intakeGuard": {
+    "urlValidated": false,
+    "techClassificationScore": null,
+    "transcriptWordCount": 298,
+    "passed": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "provider": "mock",
+  "model": "mock-v1",
+  "mode": "docusaurus",
+  "sourceFile": "examples/api-demo/input.md",
+  "sourceUrl": null,
+  "title": "Building a Simple AI Agent with Node.js",
+  "slug": "build-ai-agent-nodejs",
+  "wordCount": 347,
+  "outputWordCount": 531,
+  "generatedAt": "2026-05-14T09:01:00.000Z",
+  "outputDir": "output/build-ai-agent-nodejs-2026-05-14",
+  "reviewRequired": true,
+  "intakeGuard": {
+    "urlValidated": false,
+    "techClassificationScore": null,
+    "transcriptWordCount": 347,
+    "passed": true
+  }
+}

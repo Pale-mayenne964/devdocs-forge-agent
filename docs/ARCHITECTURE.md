@@ -1,5 +1,24 @@
 # Architecture
 
+## Pipeline Diagram
+
+```mermaid
+flowchart TD
+    A["Transcript Input\n(--file input/tutorial.md)"] --> B["Safety / Intake Guard\n(URL validate · tech classify · transcript check)"]
+    B --> C["Mode Selector\n(--type docusaurus|blog|faq|...)"]
+    C --> D["Prompt Builder\n(_shared.md + _profile.md + mode.md + config)"]
+    D --> E["Provider Adapter\nmock | OpenAI | Anthropic | Gemini"]
+    E --> F["Markdown Generator\n(index.md · docs/{slug}.md)"]
+    F --> G["Review Checklist\n(review-checklist.md · metadata.json · source-summary.md)"]
+    G --> H["Docs Site\n(Docusaurus · GitBook · GitHub · Blog)"]
+
+    style A fill:#f0f4ff,stroke:#4a6fa5
+    style B fill:#fff3cd,stroke:#d4881a
+    style E fill:#e8f5e9,stroke:#388e3c
+    style G fill:#fce4ec,stroke:#c62828
+    style H fill:#e8eaf6,stroke:#3949ab
+```
+
 ## System Overview
 
 ```

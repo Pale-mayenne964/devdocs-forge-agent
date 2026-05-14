@@ -101,6 +101,88 @@ Full issue: [.github/ISSUE_TEMPLATES_READY/05-build-minimal-web-preview.md](../.
 
 ---
 
+### 6. GitBook Export Polish
+
+**Title:** Polish GitBook output mode formatting
+**Labels:** `good first issue`, `mode`, `documentation`
+**Difficulty:** Low (prompt engineering + template work, minimal TypeScript)
+
+The `--type gitbook` mode generates valid Markdown but misses some GitBook-specific conventions: hint blocks (`{% hint style="info" %}`), page-ref cards, and tab blocks. Improve the mode prompt and add an example output.
+
+Key files:
+- `modes/gitbook.md` — update prompt with GitBook-specific formatting instructions
+- `examples/` — add a sample GitBook output showing hint blocks
+- `docs/MODES.md` — document the GitBook-specific output features
+
+Acceptance criteria:
+- Generated GitBook output uses `{% hint %}` blocks for notes and warnings
+- Output renders correctly in a local GitBook project
+- Example output added to `examples/`
+
+---
+
+### 7. Docusaurus Sidebar Helper
+
+**Title:** Add Docusaurus sidebar.js snippet generator
+**Labels:** `good first issue`, `docusaurus`, `enhancement`
+**Difficulty:** Low to medium (TypeScript, file reading)
+
+After running `npm run batch`, users manually update their Docusaurus `sidebars.js`. Add a command that reads the `output/` directory and prints a ready-to-paste sidebar config snippet.
+
+Key files:
+- Create `src/cli/commands/sidebar.command.ts`
+- Register in `src/cli/index.ts`
+- Add `npm run sidebar` script to `package.json`
+
+Acceptance criteria:
+- `npm run sidebar` prints a valid Docusaurus sidebar config snippet to stdout
+- Snippet includes all `docs/{slug}.md` files found in `output/`
+- Works with zero additional config
+
+---
+
+### 8. Transcript Chunking for Long Videos
+
+**Title:** Add transcript chunking for long transcripts
+**Labels:** `good first issue`, `pipeline`, `enhancement`
+**Difficulty:** Medium (~100 lines, involves pipeline changes)
+
+Long transcripts (>8,000 tokens) exceed typical LLM context windows. Add a chunking strategy that splits long transcripts into sections, generates per-section docs, and merges them into a single output.
+
+Key files:
+- Create `src/pipeline/transcript-chunker.ts`
+- Update `src/pipeline/generation-pipeline.ts` to call chunker when transcript exceeds a threshold
+- Add chunking config option to `src/config/config.schema.ts`
+
+Acceptance criteria:
+- Transcripts under the threshold are processed unchanged
+- Transcripts over the threshold are split at section boundaries (H2 headings)
+- Merged output is a single valid Markdown document
+- `metadata.json` records `chunked: true` and chunk count
+
+---
+
+### 9. Docs Quality Score
+
+**Title:** Add documentation quality score to verify output
+**Labels:** `good first issue`, `pipeline`, `enhancement`
+**Difficulty:** Medium (~80 lines, heuristic scoring)
+
+`npm run verify` currently checks for required files. Add a quality score (0–100) based on heuristics: heading count, code block count, word count, checklist completeness, frontmatter completeness.
+
+Key files:
+- Create `src/pipeline/quality-scorer.ts`
+- Update `src/cli/commands/verify.command.ts` to display the score
+- Add score to `metadata.json`
+
+Acceptance criteria:
+- `npm run verify` displays a quality score for each output directory
+- Score is between 0 and 100
+- Score is written to `metadata.json` as `qualityScore`
+- Documented scoring criteria in `docs/output-contract.md`
+
+---
+
 ## Creating These as GitHub Issues
 
 If you are the maintainer, use GitHub CLI to create these issues:
@@ -130,6 +212,27 @@ gh issue create \
   --title "Build minimal local web preview for generated docs" \
   --body-file ".github/ISSUE_TEMPLATES_READY/05-build-minimal-web-preview.md" \
   --label "good first issue,frontend,enhancement"
+
+# New issues (v0.1.1)
+gh issue create \
+  --title "Polish GitBook output mode formatting" \
+  --label "good first issue,mode,documentation" \
+  --body "See docs/GOOD_FIRST_ISSUES.md issue #6 for full spec."
+
+gh issue create \
+  --title "Add Docusaurus sidebar snippet generator" \
+  --label "good first issue,docusaurus,enhancement" \
+  --body "See docs/GOOD_FIRST_ISSUES.md issue #7 for full spec."
+
+gh issue create \
+  --title "Add transcript chunking for long videos" \
+  --label "good first issue,pipeline,enhancement" \
+  --body "See docs/GOOD_FIRST_ISSUES.md issue #8 for full spec."
+
+gh issue create \
+  --title "Add docs quality score to verify command" \
+  --label "good first issue,pipeline,enhancement" \
+  --body "See docs/GOOD_FIRST_ISSUES.md issue #9 for full spec."
 ```
 
 > Note: GitHub labels must exist before using `--label`. Create them first in the Labels settings page or with `gh label create "good first issue" --color "#7057ff"`.
