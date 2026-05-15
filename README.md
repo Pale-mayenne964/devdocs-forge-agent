@@ -78,7 +78,7 @@ output/angular-signals-tutorial-2026-05-13/
 ## Demo
 
 <p align="center">
-  <img src="assets/demo-terminal.svg" alt="npm run demo terminal output" width="820"/>
+  <img src="assets/demo-terminal.gif" alt="npm run demo terminal output" width="820"/>
 </p>
 
 ---
@@ -166,7 +166,15 @@ No YouTube scraping. No video downloading. No account required. Works entirely o
 ## Generated Output Preview
 
 <p align="center">
-  <img src="assets/generated-doc-preview.svg" alt="Generated Docusaurus documentation preview" width="820"/>
+  <img src="assets/generated-docusaurus-page.png" alt="Generated Docusaurus documentation preview" width="820"/>
+</p>
+
+<p align="center">
+  <img src="assets/review-checklist.png" alt="Generated review checklist preview" width="820"/>
+</p>
+
+<p align="center">
+  <img src="assets/output-folder-preview.png" alt="Generated output folder preview" width="820"/>
 </p>
 
 ---
